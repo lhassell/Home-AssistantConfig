@@ -1,0 +1,72 @@
+  radio:
+    alias: Play Radio on Google Home Audio
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.back
+          volume_level: '0.50'
+      -  service: media_player.volume_set
+         data:
+           entity_id: media_player.bathroom_speaker
+           volume_level: '1.00'
+      -  service: media_player.volume_set
+         data:
+           entity_id: media_player.den_speaker
+           volume_level: '0.30'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.dining_room_speaker
+          volume_level: '0.50'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.kitchen_speaker
+          volume_level: '0.50'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.living_room_receiver
+          volume_level: '0.50'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.living_room_speaker
+          volume_level: '0.50'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.living_room_speaker_2
+          volume_level: '0.50'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.master_bedroom_display
+          volume_level: '0.50'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.home_group
+          volume_level: '0.50'
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.morning_group
+          volume_level: '0.50'
+      -  service: media_player.play_media
+         data_template:
+           entity_id: >
+            {% if is_state("input_select.googlehome_radio", "Back Porch") %} media_player.back
+            {% elif is_state("input_select.googlehome_radio", "Bathroom") %} media_player.bathroom_speaker
+            {% elif is_state("input_select.googlehome_radio", "Den") %} media_player.den_speaker
+            {% elif is_state("input_select.googlehome_radio", "Dining Room") %} media_player.dining_room_speaker
+            {% elif is_state("input_select.googlehome_radio", "Kitchen") %} media_player.kitchen_speaker
+            {% elif is_state("input_select.googlehome_radio", "Living Room Receiver") %} media_player.living_room_receiver 
+            {% elif is_state("input_select.googlehome_radio", "Living Room 1") %} media_player.living_room_speaker
+            {% elif is_state("input_select.googlehome_radio", "Living Room 2") %} media_player.living_room_speaker_2 
+            {% elif is_state("input_select.googlehome_radio", "Master Bedroom") %} media_player.master_bedroom_display
+            {% elif is_state("input_select.googlehome_radio", "Whole Home") %} media_player.home_group
+            {% elif is_state("input_select.googlehome_radio", "Morning Area") %} media_player.morning_group			
+            {% endif %}
+           media_content_id: >
+            {% if is_state("input_select.radio_station", "KUAR") %} http://playerservices.streamtheworld.com/api/livestream-redirect/KUARFM.mp3
+            {% elif is_state("input_select.radio_station", "Spoofy Radio") %} http://sc1.slable.com:8000/live
+            {% elif is_state("input_select.radio_station", "Celtic Music Radio") %} http://195.10.228.6:8000/celticmusic.mp3
+            {% elif is_state("input_select.radio_station", "Taliadon Streams - The Hitchhiker's Guide to the Galaxy") %} http://taliadon.ddns.net:22000/tpshgttg
+            {% elif is_state("input_select.radio_station", "CreepyPasta Radio") %} http://212.71.246.115:8000/creepypasta_128
+            {% elif is_state("input_select.radio_station", "Demented Radio") %} http://dementedradio.online/listen-aac
+            {% elif is_state("input_select.radio_station", "Krypton Radio") %} https://station.kryptonradio.com:8080/stream?1599503127197
+            {% endif %}
+           media_content_type: 'audio/mp4' 

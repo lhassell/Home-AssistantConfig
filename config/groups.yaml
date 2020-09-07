@@ -1,0 +1,15 @@
+  all_switches:
+    name: All Lights (Switches)
+    icon: mdi:home-outline
+    entities:      
+      - switch.bathroom_light
+      - switch.dining_room
+      - switch.kitchen_counter_lights
+      - switch.kitchen_lights
+      
+  radio:
+   name: Radio
+   entities:
+      - input_select.radio_station
+      - input_select.googlehome_radio
+      - script.radio 
