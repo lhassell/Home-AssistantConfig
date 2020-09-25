@@ -6,7 +6,7 @@
 !.gitignore
 !*.md
 !*.png
-!www
+!/www/**
 
 # Ignore folders.
 .storage
