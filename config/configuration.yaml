@@ -60,6 +60,16 @@ sensor:
         
   - platform: template
     sensors:
+      bpfan_speed:
+        value_template: "{{ states.fan.sonoff_1000cc2bfa.attributes.speed }}"
+        
+  - platform: template
+    sensors:
+      denfan_speed:
+        value_template: "{{ states.fan.sonoff_1000cc2602.attributes.speed }}"
+        
+  - platform: template
+    sensors:
       hall_humidity:
         friendly_name: "Hall Humidity"
         unit_of_measurement: '%'

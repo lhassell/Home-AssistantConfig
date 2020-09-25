@@ -67,6 +67,6 @@
             {% elif is_state("input_select.radio_station", "Taliadon Streams - The Hitchhiker's Guide to the Galaxy") %} http://taliadon.ddns.net:22000/tpshgttg
             {% elif is_state("input_select.radio_station", "CreepyPasta Radio") %} http://212.71.246.115:8000/creepypasta_128
             {% elif is_state("input_select.radio_station", "Demented Radio") %} http://dementedradio.online/listen-aac
-            {% elif is_state("input_select.radio_station", "Krypton Radio") %} https://station.kryptonradio.com:8080/stream?1599503127197
+            {% elif is_state("input_select.radio_station", "Krypton Radio") %} http://station.kryptonradio.com:8000/stream.m3u
             {% endif %}
            media_content_type: 'audio/mp4' 
