@@ -1,1 +1,55 @@
-[]
+- id: '1605150494330'
+  alias: Nightlight on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_motion
+    from: 'off'
+    to: 'on'
+    for: 00:00:01
+  condition:
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: sun
+        before: sunrise
+      - condition: sun
+        after: sunset
+    - condition: state
+      entity_id: light.living_room
+      state: 'off'
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 51
+      color_name: orange
+    entity_id: light.living_room
+  mode: restart
+- id: '1605150658425'
+  alias: Nightlight off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_motion
+    from: 'on'
+    to: 'off'
+    for: 00:00:30
+  condition:
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: sun
+        before: sunrise
+      - condition: sun
+        after: sunset
+    - condition: numeric_state
+      entity_id: light.living_room
+      attribute: brightness
+      below: '55'
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id: light.living_room
+  mode: restart

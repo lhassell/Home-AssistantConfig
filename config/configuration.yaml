@@ -4,6 +4,9 @@ default_config:
 homeassistant:
   external_url: !secret my_url
   internal_url: !secret my_url
+  media_dirs:
+    audio: /mnt/drobo/Audio
+    video: /mnt/drobo/Video
 http:
   ssl_certificate: !secret ssl_cert
   ssl_key: !secret ssl_keys
@@ -152,41 +155,7 @@ sensor:
     scan_interval:
       minutes: 5
         
-alarmdecoder:
-  device:
-    type: socket
-    host: 192.168.0.7
-    port: 10000
-  panel_display: true
-  zones:
-    01:
-      name: 'Smoke/Heat Detectors'
-      type: 'smoke'
-    02:
-      name: 'Front Door'
-      type: 'door'
-    03:
-      name: 'Back Door'
-      type: 'door'
-    04:
-      name: 'Living Room Motion'
-      type: 'motion'
-    09:
-      name: 'Living Room Glass Break'
-      type: 'vibration'
-    10:
-      name: 'Kitchen Glass Break'
-      type: 'vibration'
-    11:
-      name: 'Mud Room Glass Break'
-      type: 'vibration'
-    12:
-      name: 'Guest Bedroom Glass Break'
-      type: 'vibration'
-    13:
-      name: 'Master Bedroom Glass Break'
-      type: 'vibration'
-      
+
 light:
   - platform: group
     name: Bedroom Lights
